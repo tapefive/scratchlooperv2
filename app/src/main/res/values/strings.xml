@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TapeFive Looper v1</string>
+    <string name="title_activity_open_splash">OpenSplash</string>
+    <string name="cutfast">cutfast</string>
+    <string name="logo">Logo</string>
+    <string name="tapefive">TODO</string>
+    <string name="stop">Stop</string>
+    <string name="select_looper">Select Looper</string>
+</resources>
