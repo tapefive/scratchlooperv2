@@ -1,0 +1,47 @@
+# Gradle
+.gradle/
+.gradle
+
+# IDE
+.idea/
+.vs/
+.vscode/
+*.iml
+*.iws
+*.ipr
+
+# Build
+build/
+.externalNativeBuild/
+.cxx/
+
+# Generated files
+*.apk
+*.aab
+*.aar
+*.zip
+
+# Local configuration
+local.properties
+gradle.properties.local
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Java/Kotlin
+*.class
+*.ktx
+target/
+out/
+
+# Test coverage
+coverage/
+jacoco/
+
+# Lint reports
+lint-results*.xml
+lint-baseline.xml
+
+# Gradle lock files
+*.lock
