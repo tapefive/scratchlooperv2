@@ -71,9 +71,9 @@ java -version
 # Should show: openjdk version "17.x.x"
 ```
 
-### 2. Android SDK 33
+### 2. Android SDK 34
 
-Required for compiling against Android 33 API.
+Required for compiling against Android 14 API.
 
 #### Installation Options
 
@@ -81,13 +81,13 @@ Required for compiling against Android 33 API.
 1. Download Android Studio: https://developer.android.com/studio
 2. Launch Android Studio
 3. Go to: Settings → SDK Manager → SDK Platforms
-4. Check "Android 13 (API 33)"
+4. Check "Android 14 (API 34)"
 5. Click "Apply" → "OK"
 
 **Option B: Command Line**
 ```bash
 # Requires Android SDK Command-line Tools first
-sdkmanager "platforms;android-33"
+sdkmanager "platforms;android-34"
 ```
 
 #### Locate Android SDK Path
@@ -129,7 +129,7 @@ javac -version
 
 ## Building the Project
 
-The project uses **Gradle 7.5** with the **Gradle Wrapper**, so no manual Gradle installation needed!
+The project uses **Gradle 8.1** with the **Gradle Wrapper**, so no manual Gradle installation needed!
 
 ### Clean Build
 
@@ -227,18 +227,21 @@ scratchlooperv2/
 ```
 
 ### Build Versions
-- **Gradle**: 7.5
-- **Android Gradle Plugin (AGP)**: 7.4.2
-- **compileSdkVersion**: 33
+- **Gradle**: 8.1
+- **Android Gradle Plugin (AGP)**: 8.1.0
+- **compileSdkVersion**: 34
 - **minSdkVersion**: 21
-- **targetSdkVersion**: 33
+- **targetSdkVersion**: 34
 - **Java**: 17
 
 ### Dependencies
 All dependencies are automatically downloaded from `mavenCentral()`:
-- `com.android.support:appcompat-v7:28.0.0`
-- `com.android.support.constraint:constraint-layout:1.1.3`
-- Additional support libraries (see app/build.gradle)
+- AndroidX libraries (modern replacement for support libraries)
+  - `androidx.appcompat:appcompat:1.6.1`
+  - `androidx.constraintlayout:constraintlayout:2.1.4`
+  - Additional AndroidX libraries (see app/build.gradle)
+- JUnit 4.13.2 for testing
+- Espresso 3.5.1 for Android testing
 
 ## Troubleshooting
 
@@ -259,9 +262,9 @@ java -version
 ```
 
 ### Error: "compileSdkVersion not specified"
-**Solution**: Ensure Android SDK 33 is installed
+**Solution**: Ensure Android SDK 34 is installed
 ```bash
-sdkmanager "platforms;android-33"
+sdkmanager "platforms;android-34"
 ```
 
 ### Error: "SDK location not found"
@@ -315,13 +318,13 @@ cd scratchlooperv2
 
 ## Project Features
 
-- **Gradle**: 7.5 (auto-downloaded via wrapper)
-- **Java 17**: Modern Java features
-- **Multi-resolution Support**: Devices from API 21 to 33
+- **Gradle**: 8.1 (auto-downloaded via wrapper)
+- **Java 17**: Modern Java features with Java 17 language level
+- **AndroidX**: Modern Android framework with latest dependencies
+- **Multi-resolution Support**: Devices from API 21 to 34
 - **Dark Mode**: System theme-aware UI
-  - Light mode: White status bar with dark icons
-  - Dark mode: Black status bar with light icons
-- **Support Libraries**: Legacy support for older devices
+  - Light mode: Standard light theme colors
+  - Dark mode: Dark theme optimized for low light environments
 - **Sound Looping**: Audio playback with SoundPool
 - **UI**: Constraint layout with custom styling
 
@@ -333,13 +336,16 @@ cd scratchlooperv2
 - Ensure all prerequisites are installed correctly
 
 ### Gradle Documentation
-- https://docs.gradle.org/7.5/userguide/userguide.html
+- https://docs.gradle.org/8.1/userguide/userguide.html
 
 ### Android Development
 - https://developer.android.com/docs
 
 ### Java 17 Features
 - https://docs.oracle.com/en/java/javase/17/
+
+### AndroidX Migration
+- https://developer.android.com/jetpack/androidx
 
 ## Next Steps
 

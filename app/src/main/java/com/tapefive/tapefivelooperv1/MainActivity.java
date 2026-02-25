@@ -6,8 +6,11 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.net.Uri;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.SystemClock;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Chronometer;
@@ -26,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
     private static final int streamType = AudioManager.STREAM_MUSIC;
 
     private float volume;
+    
+    private Chronometer simpleChronometer;
+    private boolean timerReset = true;
+    private boolean timerRunning = false;
 
 
     @Override
@@ -33,8 +40,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Chronometer simpleChronometer = (Chronometer) findViewById(R.id.simpleChronometer);
-        simpleChronometer.start();
+        simpleChronometer = (Chronometer) findViewById(R.id.simpleChronometer);
+        simpleChronometer.stop();
+        
+        simpleChronometer.setOnClickListener(v -> {
+            if (timerRunning) {
+                simpleChronometer.stop();
+                timerRunning = false;
+            } else {
+                simpleChronometer.start();
+                timerRunning = true;
+            }
+        });
 
         audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 
@@ -80,73 +97,76 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void PlaySound(View view) {
-        switch (view.getId()) {
-            case R.id.button1:
-                soundPool.play(furysp, 1, 1, 1, -1, 1);
-                soundPool.autoPause();
-                soundPool.autoResume();
-                Toast toastOne = Toast.makeText(MainActivity.this, "95 BPM", Toast.LENGTH_SHORT);
-                toastOne.setGravity(Gravity.TOP, 0,20);
-                toastOne.show();
-                break;
-            case R.id.button2:
-                soundPool.play(laptopsp, 1, 1, 1, -1, 1);
-                soundPool.autoPause();
-                soundPool.autoResume();
-                Toast toastTwo = Toast.makeText(MainActivity.this, "85 BPM", Toast.LENGTH_SHORT);
-                toastTwo.setGravity(Gravity.TOP, 0,20);
-                toastTwo.show();
-                break;
-            case R.id.button3:
-                soundPool.play(pubgsp, 1, 1, 1, -1, 1);
-                soundPool.autoPause();
-                soundPool.autoResume();
-                Toast toastThree = Toast.makeText(MainActivity.this, "100 BPM", Toast.LENGTH_SHORT);
-                toastThree.setGravity(Gravity.TOP, 0,20);
-                toastThree.show();
-                break;
-            case R.id.button4:
-                soundPool.play(loopfoursp, 1, 1, 1, -1, 1);
-                soundPool.autoPause();
-                soundPool.autoResume();
-                Toast toastFour = Toast.makeText(MainActivity.this, "90 BPM", Toast.LENGTH_SHORT);
-                toastFour.setGravity(Gravity.TOP, 0,20);
-                toastFour.show();
-                break;
-            case R.id.button5:
-                soundPool.play(loopfivesp, 1, 1, 1, -1, 1);
-                soundPool.autoPause();
-                soundPool.autoResume();
-                Toast toastFive = Toast.makeText(MainActivity.this, "105 BPM", Toast.LENGTH_SHORT);
-                toastFive.setGravity(Gravity.TOP, 0,20);
-                toastFive.show();
-                break;
-            case R.id.button6:
-                soundPool.play(synthsp, 1, 1, 1, -1, 1);
-                soundPool.autoPause();
-                soundPool.autoResume();
-                Toast toastSix = Toast.makeText(MainActivity.this, "90 BPM", Toast.LENGTH_SHORT);
-                toastSix.setGravity(Gravity.TOP, 0,20);
-                toastSix.show();
-                break;
+        if (timerReset) {
+            simpleChronometer.setBase(SystemClock.elapsedRealtime());
+            simpleChronometer.start();
+            timerRunning = true;
+            timerReset = false;
         }
-
-
+        
+        int viewId = view.getId();
+        if (viewId == R.id.button1) {
+            soundPool.play(furysp, 1, 1, 1, -1, 1);
+            soundPool.autoPause();
+            soundPool.autoResume();
+            showBPMToast("95");
+        } else if (viewId == R.id.button2) {
+            soundPool.play(laptopsp, 1, 1, 1, -1, 1);
+            soundPool.autoPause();
+            soundPool.autoResume();
+            showBPMToast("85");
+        } else if (viewId == R.id.button3) {
+            soundPool.play(pubgsp, 1, 1, 1, -1, 1);
+            soundPool.autoPause();
+            soundPool.autoResume();
+            showBPMToast("100");
+        } else if (viewId == R.id.button4) {
+            soundPool.play(loopfoursp, 1, 1, 1, -1, 1);
+            soundPool.autoPause();
+            soundPool.autoResume();
+            showBPMToast("90");
+        } else if (viewId == R.id.button5) {
+            soundPool.play(loopfivesp, 1, 1, 1, -1, 1);
+            soundPool.autoPause();
+            soundPool.autoResume();
+            showBPMToast("105");
+        } else if (viewId == R.id.button6) {
+            soundPool.play(synthsp, 1, 1, 1, -1, 1);
+            soundPool.autoPause();
+            soundPool.autoResume();
+            showBPMToast("90");
+        }
     }
 
     public void Stop(View view) {
         soundPool.autoPause();
-        Toast toastSeven = Toast.makeText(MainActivity.this, "Stopped", Toast.LENGTH_SHORT);
-        toastSeven.setGravity(Gravity.TOP, 0,20);
-        toastSeven.show();
-
+        simpleChronometer.stop();
+        simpleChronometer.setBase(SystemClock.elapsedRealtime());
+        timerReset = true;
+        timerRunning = false;
+        showCustomToast("Stopped");
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         soundPool.autoPause();
+    }
 
+    private void showBPMToast(String bpm) {
+        final Toast toast = Toast.makeText(MainActivity.this, bpm + " BPM", Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.TOP, 0, 20);
+        toast.show();
+        
+        new Handler(Looper.getMainLooper()).postDelayed(toast::cancel, 500);
+    }
+
+    private void showCustomToast(String message) {
+        final Toast toast = Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.TOP, 0, 20);
+        toast.show();
+        
+        new Handler(Looper.getMainLooper()).postDelayed(toast::cancel, 500);
     }
 
 

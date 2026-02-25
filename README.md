@@ -33,9 +33,10 @@ Clicking the TapeFive logo directs you to the developer's Soundcloud, which cont
 ## Requirements
 
 - Android SDK 21 (minSdkVersion) or higher
-- Target SDK 28
+- Target SDK 34
+- Compile SDK 34
 - Java 17 or higher
-- Gradle 7.5 or higher
+- Gradle 8.1 or higher
 
 ## Building
 

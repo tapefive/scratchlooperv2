@@ -2,7 +2,7 @@ package com.tapefive.tapefivelooperv1;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 
@@ -46,7 +46,9 @@ public class OpenSplash extends AppCompatActivity {
     @Override   protected void onPause(){
 
         super.onPause();
-        fresh.release();
+        if (fresh != null) {
+            fresh.release();
+        }
     }
 
 
