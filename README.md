@@ -28,14 +28,18 @@ Clicking the TapeFive logo directs you to the developer's Soundcloud, which cont
 - **Top Controls** - Stop button (top left) and timer (top right)
 - **Auto Stop** - Beats stop when back button is pressed
 - **Streamlined** - Removed exit button and closing splash screen
+- **Dark Mode Support** - Automatic dark theme for compatible Android devices
 
 ## Requirements
 
 - Android SDK 21 (minSdkVersion) or higher
 - Target SDK 28
-- Android Build Tools 28.0.0
+- Java 17 or higher
+- Gradle 7.5 or higher
 
 ## Building
+
+See [SETUP.md](SETUP.md) for detailed build and setup instructions.
 
 ```bash
 ./gradlew build
