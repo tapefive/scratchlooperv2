@@ -45,3 +45,6 @@ lint-baseline.xml
 
 # Gradle lock files
 *.lock
+
+# Keystore files
+*.keystore

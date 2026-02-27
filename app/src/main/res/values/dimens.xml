@@ -1,3 +1,19 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <!-- Logo and margins -->
+    <dimen name="logo_margin_horizontal">45dp</dimen>
+    <dimen name="logo_margin_top">80dp</dimen>
+    <dimen name="logo_margin_bottom">8dp</dimen>
+    <!-- Button margins -->
+    <dimen name="button_margin_vertical">8dp</dimen>
+    <dimen name="button_margin_horizontal">4dp</dimen>
+    <!-- Chronometer margins -->
+    <dimen name="chrono_margin_start">310dp</dimen>
+    <dimen name="chrono_margin_end">16dp</dimen>
+    <dimen name="chrono_text_size">25sp</dimen>
+    <!-- Button text size -->
+    <dimen name="button_text_size">22sp</dimen>
+    <!-- Stop button margins -->
+    <dimen name="stop_button_margin_start">4dp</dimen>
+    <dimen name="stop_button_margin_top">50dp</dimen>
 </resources>

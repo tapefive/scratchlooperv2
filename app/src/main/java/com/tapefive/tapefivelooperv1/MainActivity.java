@@ -33,6 +33,11 @@ public class MainActivity extends AppCompatActivity {
     private Chronometer simpleChronometer;
     private boolean timerReset = true;
     private boolean timerRunning = false;
+    
+    private float tempoMultiplier = 1.0f;
+    private int currentSoundId = -1;
+    private int currentStreamId = -1;
+    private boolean tempoAdjusted = false;
 
 
     @Override
@@ -104,37 +109,40 @@ public class MainActivity extends AppCompatActivity {
             timerReset = false;
         }
         
+        tempoMultiplier = 1.0f;
+        tempoAdjusted = false;
+        soundPool.autoPause();
         int viewId = view.getId();
         if (viewId == R.id.button1) {
-            soundPool.play(furysp, 1, 1, 1, -1, 1);
-            soundPool.autoPause();
+            currentSoundId = furysp;
+            currentStreamId = soundPool.play(furysp, 1, 1, 1, -1, tempoMultiplier);
             soundPool.autoResume();
-            showBPMToast("95");
+            showBPMToast("95 BPM x" + String.format("%.2f", tempoMultiplier));
         } else if (viewId == R.id.button2) {
-            soundPool.play(laptopsp, 1, 1, 1, -1, 1);
-            soundPool.autoPause();
+            currentSoundId = laptopsp;
+            currentStreamId = soundPool.play(laptopsp, 1, 1, 1, -1, tempoMultiplier);
             soundPool.autoResume();
-            showBPMToast("85");
+            showBPMToast("85 BPM x" + String.format("%.2f", tempoMultiplier));
         } else if (viewId == R.id.button3) {
-            soundPool.play(pubgsp, 1, 1, 1, -1, 1);
-            soundPool.autoPause();
+            currentSoundId = pubgsp;
+            currentStreamId = soundPool.play(pubgsp, 1, 1, 1, -1, tempoMultiplier);
             soundPool.autoResume();
-            showBPMToast("100");
+            showBPMToast("100 BPM x" + String.format("%.2f", tempoMultiplier));
         } else if (viewId == R.id.button4) {
-            soundPool.play(loopfoursp, 1, 1, 1, -1, 1);
-            soundPool.autoPause();
+            currentSoundId = loopfoursp;
+            currentStreamId = soundPool.play(loopfoursp, 1, 1, 1, -1, tempoMultiplier);
             soundPool.autoResume();
-            showBPMToast("90");
+            showBPMToast("90 BPM x" + String.format("%.2f", tempoMultiplier));
         } else if (viewId == R.id.button5) {
-            soundPool.play(loopfivesp, 1, 1, 1, -1, 1);
-            soundPool.autoPause();
+            currentSoundId = loopfivesp;
+            currentStreamId = soundPool.play(loopfivesp, 1, 1, 1, -1, tempoMultiplier);
             soundPool.autoResume();
-            showBPMToast("105");
+            showBPMToast("105 BPM x" + String.format("%.2f", tempoMultiplier));
         } else if (viewId == R.id.button6) {
-            soundPool.play(synthsp, 1, 1, 1, -1, 1);
-            soundPool.autoPause();
+            currentSoundId = synthsp;
+            currentStreamId = soundPool.play(synthsp, 1, 1, 1, -1, tempoMultiplier);
             soundPool.autoResume();
-            showBPMToast("90");
+            showBPMToast("90 BPM x" + String.format("%.2f", tempoMultiplier));
         }
     }
 
@@ -144,7 +152,42 @@ public class MainActivity extends AppCompatActivity {
         simpleChronometer.setBase(SystemClock.elapsedRealtime());
         timerReset = true;
         timerRunning = false;
-        showCustomToast("Stopped");
+    }
+
+    public void IncreaseTempo25(View view) {
+        if (currentStreamId != -1 && currentSoundId != -1) {
+            tempoMultiplier = 1.25f;
+            soundPool.stop(currentStreamId);
+            currentStreamId = soundPool.play(currentSoundId, 1, 1, 1, -1, tempoMultiplier);
+            showCustomToast("Tempo: x" + String.format("%.2f", tempoMultiplier));
+        }
+    }
+
+    public void IncreaseTempo50(View view) {
+        if (currentStreamId != -1 && currentSoundId != -1) {
+            tempoMultiplier = 1.5f;
+            soundPool.stop(currentStreamId);
+            currentStreamId = soundPool.play(currentSoundId, 1, 1, 1, -1, tempoMultiplier);
+            showCustomToast("Tempo: x" + String.format("%.2f", tempoMultiplier));
+        }
+    }
+
+    public void DecreaseTempo25(View view) {
+        if (currentStreamId != -1 && currentSoundId != -1) {
+            tempoMultiplier = 0.75f;
+            soundPool.stop(currentStreamId);
+            currentStreamId = soundPool.play(currentSoundId, 1, 1, 1, -1, tempoMultiplier);
+            showCustomToast("Tempo: x" + String.format("%.2f", tempoMultiplier));
+        }
+    }
+
+    public void DecreaseTempo50(View view) {
+        if (currentStreamId != -1 && currentSoundId != -1) {
+            tempoMultiplier = 0.5f;
+            soundPool.stop(currentStreamId);
+            currentStreamId = soundPool.play(currentSoundId, 1, 1, 1, -1, tempoMultiplier);
+            showCustomToast("Tempo: x" + String.format("%.2f", tempoMultiplier));
+        }
     }
 
     @Override
