@@ -7,21 +7,22 @@
     android:background="@android:color/white"
     tools:context=".MainActivity">
 
+    <!-- Vertical guidelines for even spacing -->
     <ImageView
         android:id="@+id/Logo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/logo_margin_horizontal"
-        android:layout_marginTop="@dimen/logo_margin_top"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="@dimen/logo_margin_horizontal"
         android:contentDescription="@string/logo"
         android:onClick="Logo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/logo" />
 
-    <!-- Vertical guidelines for even spacing -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_top"
         android:layout_width="wrap_content"
@@ -199,7 +200,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/tempo_instructions"
         android:textSize="14sp"
         android:textColor="@android:color/black"
@@ -207,21 +208,23 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tempoDecrease50"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Tempo Control Row -->
+
     <Button
         android:id="@+id/tempoDecrease50"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="68dp"
         android:background="@android:color/darker_gray"
         android:onClick="DecreaseTempo50"
         android:text="-50%"
-        android:textSize="12sp"
         android:textColor="@android:color/black"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tempoDecrease25"
         app:layout_constraintStart_toStartOf="parent" />
@@ -231,12 +234,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="68dp"
         android:background="@android:color/darker_gray"
         android:onClick="DecreaseTempo25"
         android:text="-25%"
-        android:textSize="12sp"
         android:textColor="@android:color/black"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tempoIncrease25"
         app:layout_constraintStart_toEndOf="@+id/tempoDecrease50" />
@@ -246,12 +249,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="68dp"
         android:background="@android:color/darker_gray"
         android:onClick="IncreaseTempo25"
         android:text="+25%"
-        android:textSize="12sp"
         android:textColor="@android:color/black"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tempoIncrease50"
         app:layout_constraintStart_toEndOf="@+id/tempoDecrease25" />
@@ -261,12 +264,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="68dp"
         android:background="@android:color/darker_gray"
         android:onClick="IncreaseTempo50"
         android:text="+50%"
-        android:textSize="12sp"
         android:textColor="@android:color/black"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tempoIncrease25" />

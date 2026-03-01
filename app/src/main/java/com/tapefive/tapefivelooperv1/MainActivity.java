@@ -117,32 +117,32 @@ public class MainActivity extends AppCompatActivity {
             currentSoundId = furysp;
             currentStreamId = soundPool.play(furysp, 1, 1, 1, -1, tempoMultiplier);
             soundPool.autoResume();
-            showBPMToast("95 BPM x" + String.format("%.2f", tempoMultiplier));
+            showBPMToast("95 BPM");
         } else if (viewId == R.id.button2) {
             currentSoundId = laptopsp;
             currentStreamId = soundPool.play(laptopsp, 1, 1, 1, -1, tempoMultiplier);
             soundPool.autoResume();
-            showBPMToast("85 BPM x" + String.format("%.2f", tempoMultiplier));
+            showBPMToast("85 BPM");
         } else if (viewId == R.id.button3) {
             currentSoundId = pubgsp;
             currentStreamId = soundPool.play(pubgsp, 1, 1, 1, -1, tempoMultiplier);
             soundPool.autoResume();
-            showBPMToast("100 BPM x" + String.format("%.2f", tempoMultiplier));
+            showBPMToast("100 BPM");
         } else if (viewId == R.id.button4) {
             currentSoundId = loopfoursp;
             currentStreamId = soundPool.play(loopfoursp, 1, 1, 1, -1, tempoMultiplier);
             soundPool.autoResume();
-            showBPMToast("90 BPM x" + String.format("%.2f", tempoMultiplier));
+            showBPMToast("90 BPM" );
         } else if (viewId == R.id.button5) {
             currentSoundId = loopfivesp;
             currentStreamId = soundPool.play(loopfivesp, 1, 1, 1, -1, tempoMultiplier);
             soundPool.autoResume();
-            showBPMToast("105 BPM x" + String.format("%.2f", tempoMultiplier));
+            showBPMToast("105 BPM");
         } else if (viewId == R.id.button6) {
             currentSoundId = synthsp;
             currentStreamId = soundPool.play(synthsp, 1, 1, 1, -1, tempoMultiplier);
             soundPool.autoResume();
-            showBPMToast("90 BPM x" + String.format("%.2f", tempoMultiplier));
+            showBPMToast("90 BPM");
         }
     }
 
@@ -159,7 +159,6 @@ public class MainActivity extends AppCompatActivity {
             tempoMultiplier = 1.25f;
             soundPool.stop(currentStreamId);
             currentStreamId = soundPool.play(currentSoundId, 1, 1, 1, -1, tempoMultiplier);
-            showCustomToast("Tempo: x" + String.format("%.2f", tempoMultiplier));
         }
     }
 
@@ -168,7 +167,6 @@ public class MainActivity extends AppCompatActivity {
             tempoMultiplier = 1.5f;
             soundPool.stop(currentStreamId);
             currentStreamId = soundPool.play(currentSoundId, 1, 1, 1, -1, tempoMultiplier);
-            showCustomToast("Tempo: x" + String.format("%.2f", tempoMultiplier));
         }
     }
 
@@ -177,7 +175,6 @@ public class MainActivity extends AppCompatActivity {
             tempoMultiplier = 0.75f;
             soundPool.stop(currentStreamId);
             currentStreamId = soundPool.play(currentSoundId, 1, 1, 1, -1, tempoMultiplier);
-            showCustomToast("Tempo: x" + String.format("%.2f", tempoMultiplier));
         }
     }
 
@@ -186,7 +183,6 @@ public class MainActivity extends AppCompatActivity {
             tempoMultiplier = 0.5f;
             soundPool.stop(currentStreamId);
             currentStreamId = soundPool.play(currentSoundId, 1, 1, 1, -1, tempoMultiplier);
-            showCustomToast("Tempo: x" + String.format("%.2f", tempoMultiplier));
         }
     }
 
@@ -197,24 +193,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showBPMToast(String bpm) {
-        final Toast toast = Toast.makeText(MainActivity.this, bpm + " BPM", Toast.LENGTH_LONG);
+        final Toast toast = Toast.makeText(MainActivity.this, bpm, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.TOP, 0, 20);
         toast.show();
         
         new Handler(Looper.getMainLooper()).postDelayed(toast::cancel, 500);
     }
-
-    private void showCustomToast(String message) {
-        final Toast toast = Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.TOP, 0, 20);
-        toast.show();
-        
-        new Handler(Looper.getMainLooper()).postDelayed(toast::cancel, 500);
-    }
-
-
 }
-
-
-
-

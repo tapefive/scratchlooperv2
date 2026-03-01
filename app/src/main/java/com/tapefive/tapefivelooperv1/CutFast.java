@@ -114,32 +114,32 @@ public class CutFast extends AppCompatActivity {
             currentSoundId = beatOne;
             currentStreamId = soundPool.play(beatOne, 1, 1, 1, -1, tempoMultiplier);
             soundPool.autoResume();
-            showBPMToast("97 BPM x" + String.format("%.2f", tempoMultiplier));
+            showBPMToast("97 BPM");
         } else if (viewId == R.id.button2) {
             currentSoundId = beatTwo;
             currentStreamId = soundPool.play(beatTwo, 1, 1, 1, -1, tempoMultiplier);
             soundPool.autoResume();
-            showBPMToast("84 BPM x" + String.format("%.2f", tempoMultiplier));
+            showBPMToast("84 BPM");
         } else if (viewId == R.id.button3) {
             currentSoundId = beatThree;
             currentStreamId = soundPool.play(beatThree, 1, 1, 1, -1, tempoMultiplier);
             soundPool.autoResume();
-            showBPMToast("95 BPM x" + String.format("%.2f", tempoMultiplier));
+            showBPMToast("95 BPM");
         } else if (viewId == R.id.button4) {
             currentSoundId = beatFour;
             currentStreamId = soundPool.play(beatFour, 1, 1, 1, -1, tempoMultiplier);
             soundPool.autoResume();
-            showBPMToast("95 BPM x" + String.format("%.2f", tempoMultiplier));
+            showBPMToast("95 BPM");
         } else if (viewId == R.id.button5) {
             currentSoundId = beatFive;
             currentStreamId = soundPool.play(beatFive, 1, 1, 1, -1, tempoMultiplier);
             soundPool.autoResume();
-            showBPMToast("94 BPM x" + String.format("%.2f", tempoMultiplier));
+            showBPMToast("94 BPM");
         } else if (viewId == R.id.button6) {
             currentSoundId = beatSix;
             currentStreamId = soundPool.play(beatSix, 1, 1, 1, -1, tempoMultiplier);
             soundPool.autoResume();
-            showBPMToast("92 BPM x" + String.format("%.2f", tempoMultiplier));
+            showBPMToast("92 BPM");
         }
     }
 
@@ -156,7 +156,6 @@ public class CutFast extends AppCompatActivity {
             tempoMultiplier = 1.25f;
             soundPool.stop(currentStreamId);
             currentStreamId = soundPool.play(currentSoundId, 1, 1, 1, -1, tempoMultiplier);
-            showCustomToast("Tempo: x" + String.format("%.2f", tempoMultiplier));
         }
     }
 
@@ -165,7 +164,6 @@ public class CutFast extends AppCompatActivity {
             tempoMultiplier = 1.5f;
             soundPool.stop(currentStreamId);
             currentStreamId = soundPool.play(currentSoundId, 1, 1, 1, -1, tempoMultiplier);
-            showCustomToast("Tempo: x" + String.format("%.2f", tempoMultiplier));
         }
     }
 
@@ -174,7 +172,6 @@ public class CutFast extends AppCompatActivity {
             tempoMultiplier = 0.75f;
             soundPool.stop(currentStreamId);
             currentStreamId = soundPool.play(currentSoundId, 1, 1, 1, -1, tempoMultiplier);
-            showCustomToast("Tempo: x" + String.format("%.2f", tempoMultiplier));
         }
     }
 
@@ -183,7 +180,6 @@ public class CutFast extends AppCompatActivity {
             tempoMultiplier = 0.5f;
             soundPool.stop(currentStreamId);
             currentStreamId = soundPool.play(currentSoundId, 1, 1, 1, -1, tempoMultiplier);
-            showCustomToast("Tempo: x" + String.format("%.2f", tempoMultiplier));
         }
     }
 
@@ -194,15 +190,7 @@ public class CutFast extends AppCompatActivity {
     }
 
     private void showBPMToast(String bpm) {
-        final Toast toast = Toast.makeText(CutFast.this, bpm + " BPM", Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.TOP, 0, 20);
-        toast.show();
-        
-        new Handler(Looper.getMainLooper()).postDelayed(toast::cancel, 500);
-    }
-
-    private void showCustomToast(String message) {
-        final Toast toast = Toast.makeText(CutFast.this, message, Toast.LENGTH_LONG);
+        final Toast toast = Toast.makeText(CutFast.this, bpm, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.TOP, 0, 20);
         toast.show();
         

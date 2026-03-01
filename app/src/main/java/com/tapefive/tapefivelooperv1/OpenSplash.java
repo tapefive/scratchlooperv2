@@ -27,7 +27,7 @@ public class OpenSplash extends AppCompatActivity {
 
                 fresh=MediaPlayer.create(OpenSplash.this, R.raw.scratch);
                 fresh.start();
-                sleep(5000);
+                sleep(4000);
 
 
             }
